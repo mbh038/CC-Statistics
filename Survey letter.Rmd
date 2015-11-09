@@ -1,0 +1,22 @@
+---
+title: "CC Statistics"
+author: "Michael Hunt"
+date: "20 October 2015"
+output: html_document
+---
+
+Hi All,
+
+Andrew Smart has asked me to find out what is going on across the corporation regarding the use and teaching of statistics. Interested staff from each School were nominated, and this is why you are receiving this.
+
+In writing this I am not seeking to impose any control over who does what, but do hope that a community of practice can be established through which we can all find out where expertise exists and get help if we want it.
+
+Software | Next header
+-------------|----------------
+Excel | cfgdfgfdgd
+Minitab |
+SPSS |
+R |
+
+
+
