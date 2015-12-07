@@ -9,7 +9,7 @@ mu0   = 6     ## Null-hypothesized value
 alpha = 0.05  ## Significance Level
 s.sq  = 16    ## Variance from pilot study
 n1    = 64    ## Sample Size
-alt =  6.5
+alt =   8.0
 
 se = sqrt(s.sq/n1)
 
