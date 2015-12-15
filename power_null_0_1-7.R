@@ -217,7 +217,7 @@ myPNG('power_80.png',
 
 sd=12
 effect=3
-n=500
+n=50
 alpha=.05
 power=0.8
 se=sqrt(2*sd^2/n)

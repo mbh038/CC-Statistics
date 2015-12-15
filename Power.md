@@ -240,11 +240,11 @@ Yes!
 
 It costs money to collect data and in this case we would be unnecessarily exposing patients to a drug, which is ethically questionable. 
 
-Common practice is to identify a sample size such that it would give 80% or 90% power - the value chosen depends on the context.
+Common practice is to identify a sample size such that would give 80% or 90% power - the value chosen depends on the context.
 
 The idea is to strike a balance between sufficient power and minimum exposure of patients to a drug, for example, and to avoid unnecessary expense.
 
-What sample size will give a power of 80%
+What sample size will give a power of 80% ?
 ========================================================
 We start by identifying the Z-score that would give us a lower tail of 80%: it would be about 0.84:
 
@@ -258,7 +258,7 @@ qnorm(0.8)
 ```
 [1] 0.8416212
 ```
-What sample size will give a power of 80%
+What sample size will give a power of 80 ?
 ========================================================
 Additionally, the rejection region always extends $1.96\times SE$ from the center of the null distribution for $\alpha = 0.05$. This allows us to calculate the target distance between the center of the null and alternative distributions in terms of the standard error:
 
@@ -268,7 +268,7 @@ $$
 \end{align*}
 $$
 
-What sample size will give a power of 80%
+What sample size will give a power of 80% ?
 ========================================================
 In our example, we also want the distance between the null and alternative distributions' centers to equal the minimum effect size of interest, 3mmHg, which allows us to set up an equation between this difference and the standard error:
 
@@ -284,7 +284,7 @@ $$
 We should target about 251 patients per group.
 
 ========================================================
-The standard error difference of $$2.8 \times SE$$ is specific to a context where the targeted power is 80% and the significance level is $\alpha = 0.05$. If the targeted power is 90% or if we use a difference significance level, then we'll use something a little different.
+The standard error difference of $$2.8 \times SE$$ is specific to a context where the targeted power is 80% and the significance level is $\alpha = 0.05$. If the targeted power is 90% or if we use a different significance level, then we'll use something a little different.
 
 * 80% power, 5% significance : 2.8 SEs
 * 80% power, 1% significance : 3.4 SEs
