@@ -209,27 +209,27 @@ text(-1, 0.018, "1.96 SE", pos = 3, col = COL[4], cex = 1.0)
 dev.off()
 
 # _____ Variable power _____ #
-myPNG('power_80.png',
-      700, 250,
+myPNG('power_5000.png',
+      2000, 1000,
       mar = c(2.8, 0, 0, 0),
       mgp = c(0, 0.45, 0))
 #BuildNull(xlim = c(-9, 10))
 
 sd=12
 effect=3
-n=50
+n=5000
 alpha=.05
 power=0.8
 se=sqrt(2*sd^2/n)
 
 normTail(-3, 1.071, L = -1000, U = 1000,
          df = 50, lwd = 2.5, add = TRUE,
-         curveColor = COL[2],xlim = c(-8.8, 10))
+         curveColor = COL[2],xlim = c(-8.8, 10),cex.axis=5)
 x=seq(-9,9,.1)
 y=dnorm(x,-effect,se)
 plot(x,y,col = COL[2],lwd=2.5,type="l",xaxp  = c(-9, 9, 6),axes=FALSE)
 
-xshade=seq(-9,-qnorm(1-alpha/2)*se,.1)
+xshade=seq(-9,-qnorm(1-alpha/2)*se,.01)
 yshade=dnorm(xshade,-effect,se)
 
 polygon(c(-9,xshade,-qnorm(1-alpha/2)*se),c(0,yshade,0),col=COL [16])
@@ -247,6 +247,6 @@ segments(-qnorm(1-alpha/2)*se * c(-1, 1), rep(0, 2), y1 = rep(0.15, 2),
          col = COL[4], lty = 3, lwd = 3)
 segments(-qnorm(1-alpha/2)*se * c(-1, 1), rep(0, 2), y1 = rep(0.15, 2),
          col = COL[4], lty = 3, lwd = 1.5)
-
+#text(8,.22,"n = 50",cex=2.0)
 
 dev.off()

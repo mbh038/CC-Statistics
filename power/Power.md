@@ -40,7 +40,7 @@ The researchers would like to run the clinical trial on patients with systolic b
 
 Suppose previously published studies suggest that the standard deviation of the patients' blood pressures will be about 12 mmHg and the distribution of patient blood pressures will be approximately symmetric.
 
-If~we had 100 patients per group, what would be the approximate standard error for $\bar{x}_{trmt} - \bar{x}_{ctrl}$?}
+If we had 100 patients per group, what would be the approximate standard error for $\bar{x}_{trmt} - \bar{x}_{ctrl}$?
 
 The standard error is calculated as follows:
 
@@ -152,11 +152,12 @@ $$Z = \frac{-3.332 - (-3)}{1.7}  = -0.20$$
 
 
 ```r
-pnorm(-3.332,-3,1.7)
+power<-round(pnorm(-3.332,-3,1.7),2)
+power
 ```
 
 ```
-[1] 0.4225814
+[1] 0.42
 ```
 
 The __power__ for the test is about 42% when $\mu_{trmt} - \mu_{ctrl} = -3$ and each group has a sample size of 100.
@@ -225,11 +226,12 @@ $$Z = \frac{-1.49 - (-3)}{0.76}  = 1.99$$
 
 
 ```r
-pnorm(-1.49,-3,0.76)
+power<-round(pnorm(-1.49,-3,0.76),2)
+power
 ```
 
 ```
-[1] 0.9765301
+[1] 0.98
 ```
 
 Hence, with 500 patients, the power would be 97.7% - we would be 97.7% sure that we would detect an effect of 3 mm Hg or greater.
@@ -300,3 +302,106 @@ Can we have too many samples?
 
 
 
+========================================================
+transition: fade
+
+![power 50](power_50.png)
+
+
+n = 50
+  
+
+
+```r
+power
+```
+
+```
+[1] 0.24
+```
+  
+
+========================================================
+transition: fade
+
+![power 100](power_100.png)
+
+n = 100
+
+
+
+```r
+power
+```
+
+```
+[1] 0.42
+```
+
+========================================================
+transition: fade
+
+![power 250](power_250.png)
+
+n = 250
+
+
+
+```r
+power
+```
+
+```
+[1] 0.8
+```
+
+========================================================
+transition: fade
+
+![power 500](power_500.png)
+
+n = 500
+
+
+
+```r
+power
+```
+
+```
+[1] 0.98
+```
+
+========================================================
+transition: fade
+
+![power 1000](power_1000.png)
+
+n = 1000
+
+
+
+```r
+power
+```
+
+```
+[1] 1
+```
+
+========================================================
+transition: fade
+
+![power 5000](power_5000.png)
+
+n = 5000
+
+
+
+```r
+power
+```
+
+```
+[1] 1
+```
