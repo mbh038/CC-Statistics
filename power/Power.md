@@ -2,7 +2,14 @@
 
 Power
 ========================================================
-What chance is there that an experiment will detect a real effect?
+What chance is there that an experiment will detect a real effect?  
+
+Based on:  
+
+<small>Diez, D.M., Barr, C.D. and Cetinkaya-Rundel, M. (2015)  
+OpenIntro Statistics 3rd edition.   
+www.openintro.org.  
+Section 5.4</small>
 
 ========================================================
 We want to collect enough data that we can detect important effects. 
