@@ -2,6 +2,16 @@
 
 Power
 ========================================================
+Based on 
+
+Diez, D. M., Barr, C. D., & Cetinkaya-Rundel, M. (2015).  
+_OpenIntro Statistics_ (3rd ed.).  
+Open Intro.  
+www.openintro.org.  
+
+Section 5.4,  pp 239 - 245
+
+========================================================
 What chance is there that an experiment will detect a real effect?
 
 ========================================================
@@ -299,13 +309,16 @@ Smaller effect sizes demand more samples for the same power
 Can we have too many samples?
 ========================================================
 ![power 80](power_curve_neg_3.png)
-
+***
+<small>The power is already 100% if we have 500 samples, so there is no point in taking more samples.</small>
 
 
 ========================================================
 transition: fade
 
 ![power 50](power_50.png)
+
+
 
 
 n = 50
@@ -319,7 +332,9 @@ power
 ```
 [1] 0.24
 ```
-  
+
+
+
 
 ========================================================
 transition: fade
