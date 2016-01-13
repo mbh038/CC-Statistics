@@ -26,9 +26,9 @@ randomisation, blinded, double blinded
 Examples
 ========================================================
 
-The new ad produces more click-throughs
-The survival rate will increase with this drug
-The traffic calming measures led to fewer road accidents.
+The new ad produces more click-throughs  
+The survival rate will increase with this drug  
+The traffic calming measures led to fewer road accidents.  
 
 Summary of hypothesis testing
 ========================================================
@@ -47,7 +47,10 @@ How different is different?
 * How do we know that the difference between the experimental and control groups is not due to chance?  
 * We don't! But we can calculate the odds that it is.  
 * This is the <span style="color:blue">_p_ value</span>  
-* In repeated experiments of this sample size, how often would you see a result as or more extreme than this, assuming the null hypothesis?  
+* In repeated experiments of this sample size, how often would you see a result as or more extreme than this, assuming the null hypothesis?
+    + Expressed as a conditional probability:
+$$p=P(\mathrm{Result}|H_0)$$
+    + which means..."what is the probability of getting this result, _given_ the null hypothesis"
 
 p value
 ========================================================
@@ -68,7 +71,7 @@ Why? No good reason.
 
 The Truth Wears Off (Lehrer 2010)
 ========================================================
-Lehrer, J. (2010, December 13). The Truth Wears Off. The New Yorker. Retrieved from http://www.newyorker.com/magazine/2010/12/13/the-truth-wears-off
+<small>Lehrer, J. (2010, December 13). The Truth Wears Off. The New Yorker. Retrieved from http://www.newyorker.com/magazine/2010/12/13/the-truth-wears-off</small>
 
 
 
@@ -80,6 +83,15 @@ __Anders Pope Moller__ 1991
 Between 1992 and 1997, the average effect size shrank by eighty per cent.
 
 
+What could be the reasons for this?
+========================================================
+One possible reason is known as "publication bias"
+
+For example, see:
+
+<small>Joober, R., Schmitz, N., Annable, L. and Boksa, P. (2012) Publication bias: What are the challenges and can they be overcome? Journal of Psychiatry & Neuroscience : JPN. [Online] 37 (3), 149-152. Available at: doi:10.1503/jpn.120065.</small>
+
+Do publication pressures cause a tendency to produce only psoitive results?
 
 
 Reason 1: Publication Bias (Joober 2012)
@@ -93,7 +105,7 @@ Reason 1: Publication Bias (Joober 2012)
 
 "a highly significant correlation ($R^2 = 0.13$, _p_ < 0.001) between impact factor and overestimation of effect sizes has been reported."
 
-The Decline Effect
+So....the Decline Effect
 ========================================================
 ![decline effect](decline_effect.png)
 
@@ -105,24 +117,29 @@ could be due to.....
 
 Effect Size
 ========================================================
-Interpretion is essential. 
+Interpretation is essential. 
 
-Note that "statistically significant" is not the same as plain English "significant".  
+Note that "statistically significant" is not the same as plain English "significant". 
+
+
 Is the result important?  
 
-_p_ values conflate sample size, effect size and statistical test.
+_p_ values conflate sample size, effect size and statistical test.  
+
 In many cases a small _p_ value is simply the result of a large sample size being used.  
 
-What we want to know is, how big is the effect and what does it mean, and for whom?
+What we want to know is, how big is the effect, what does it mean, and for whom?
 
 
 Effect Size
 ========================================================
-Coe, R. (2002). It's the Effect Size, Stupid: What effect size is and why it is important. Annual Conference of the  British Educational Research Association. 
+<small>Coe, R. (2002). _It's the Effect Size, Stupid: What effect size is and why it is important._ Annual Conference of the  British Educational Research Association.</small>
 
 $$\mathrm{Effect\ Size=\dfrac{(mean\ of\ experimental\ group)-(mean\ of\ control\ group)}{standard\ deviation}}$$
 
+
 Not just significant - __how__ significant.  
+
 
 Often used in meta-analysis to combine results of different studies.  
 
@@ -130,7 +147,7 @@ Often used in meta-analysis to combine results of different studies.
 
 Effect Size
 ========================================================
-it is the standardised mean difference  
+This is the standardised mean difference  
 
 $$ES=\dfrac{X_1-X_2}{\sigma_\mathrm{pooled}}$$  
 
@@ -141,7 +158,7 @@ Different ways to calculate $\sigma_\mathrm{pooled}$ eg take $\sigma$ of control
 Cohen's Heuristic
 ========================================================
 
-Cohen, J. (1988). Statistical power analysis for the behavioral sciences. Statistical Power Analysis for the Behavioral Sciences. doi:10.1234/12345678
+<small>Cohen, J. (1988). _Statistical power analysis for the behavioral sciences_ doi:10.1234/12345678</small>
 
 
 Standardised mean difference effect size
@@ -156,9 +173,9 @@ What does a 95% confidence interval of the effect size mean?
 * If we repeated the experiment 100 times than we expect that the interval will contains the observed effect size 95/100 times  
 * If the confidence interval includes zero, then this is equivalent ot saying that the result is not statistically significant.
 
-Reason 2: Mistakes and Fraud (Reason 2)
+Reason 2: Mistakes and Fraud
 ========================================================
-Van Noorden, R. (2011). Science publishing: The trouble with retractions. Nature, 478(7367), 26-28. doi:10.1038/478026a
+<small>Van Noorden, R. (2011). _Science publishing: The trouble with retractions_. Nature, 478 (7367), 26-28. doi:10.1038/478026a </small>
 
 * From 2001-2011:10X increase in retractions but only 1.44X increase in papers.
 
