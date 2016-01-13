@@ -9,11 +9,11 @@ Hypothesis testing
 Compare an experimental group and a control group.
 
 $H_0$: Null hypothesis.   
-No difference between the groups.
+<small>No difference between the groups.</small>
   $$\mu_{exp} - \mu_{ctrl} = 0$$
   
 $H_A$: Alternative hypothesis.  
-Statistically significant difference between the groups
+<small>Statistically significant difference between the groups</small>
 
   $$\mu_{exp} - \mu_{ctrl} \neq 0$$
   
@@ -32,25 +32,59 @@ The traffic calming measures led to fewer road accidents.
 
 Summary of hypothesis testing
 ========================================================
+transition: fade
 
- | Do not reject $H_0$ | Reject $H_0$
+   | Do not reject $H_0$ | Reject $H_0$
 -------------|-------------------|--------------
-$H_0$ is True  |Correct Decision  |Type 1 error 
-  | $1 - \alpha$ | $\alpha$
-$H_0$ is False |Type 2 error | Correct decision 
-  | $\beta$ | <span style="color:blue">_power_</span>: $1-\beta$
+$H_0$ is True  |Correct Decision  |type I error 
+$H_0$ is False |type II error | Correct decision 
 
+Summary of hypothesis testing
+========================================================
+transition: fade
 
+   | Do not reject $H_0$ | Reject $H_0$
+-------------|-------------------|--------------
+$H_0$ is True  |True Negative  |False Positive 
+$H_0$ is False |False Negative | True Positive 
+
+Summary of hypothesis testing
+========================================================
+transition: fade
+
+   | Do not reject $H_0$ | Reject $H_0$
+-------------|-------------------|--------------
+$H_0$ is True  |$P(-|H_0)$  |$P(+|H_0)$ 
+$H_0$ is False |$P(-|H_\mathrm{A})$ | $P(+|H_\mathrm{A})$ 
+
+Summary of hypothesis testing
+========================================================
+transition: fade
+
+   | Do not reject $H_0$ | Reject $H_0$
+-------------|-------------------|--------------
+$H_0$ is True  | $1 - \alpha$ | $\alpha$
+$H_0$ is False | $\beta$ |  $1-\beta$
+  
+
+<span style="color:red">$\alpha$</span> is the <span style="color:red">type I error rate</span>: the probability of observing a relationship when there isn't one.  
+<span style="color:red">$\alpha$</span> is the significance threshold that the investigator has chosen, typically 0.05 or 0.01. 
+
+<span style="color:green">$\beta$</span> is the <span style="color:green">type II error rate</span>: the probability of missing a relationship when in fact there is one. 
+
+<span style="color:blue">$1-\beta$</span> is the <span style="color:blue">_power_</span>: the probability that a real relationship will be detected..
+
+  
 How different is different?
 ========================================================
 
 * How do we know that the difference between the experimental and control groups is not due to chance?  
 * We don't! But we can calculate the odds that it is.  
-* This is the <span style="color:blue">_p_ value</span>  
-* In repeated experiments of this sample size, how often would you see a result as or more extreme than this, assuming the null hypothesis?
+* This is the <span style="color:blue">_p_ value</span>, which tells us: 
+  + In repeated experiments of this sample size, how often we would expect to see a result as or more extreme than this, assuming that the null hypothesis $H_0$ is true.
     + Expressed as a conditional probability:
 $$p=P(\mathrm{Result}|H_0)$$
-    + which means..."what is the probability of getting this result, _given_ the null hypothesis"
+    + which means..."what is the probability of getting this result, _given_ the null hypothesis $H_0$"
 
 p value
 ========================================================
@@ -75,12 +109,12 @@ The Truth Wears Off (Lehrer 2010)
 
 
 
-__John Davis, University of Illinois__
-"Davis has a forthcoming analysis demonstrating that the efficacy of antidepressants has gone down as much as threefold in recent decades."
+__John Davis, University of Illinois__  
+* <small>"Davis has a forthcoming analysis demonstrating that the efficacy of antidepressants has gone down as much as threefold in recent decades."</small>
 
-__Anders Pope Moller__ 1991    
-"female barn swallows were far more likely to mate with male birds that had long, symmetrical feathers"   
-Between 1992 and 1997, the average effect size shrank by eighty per cent.
+__Anders Pope Moller__ (1991)    
+* <small>"female barn swallows were far more likely to mate with male birds that had long, symmetrical feathers"</small>   
+* _Between 1992 and 1997, the average effect size shrank by eighty per cent._
 
 
 What could be the reasons for this?
@@ -89,9 +123,9 @@ One possible reason is known as "publication bias"
 
 For example, see:
 
-<small>Joober, R., Schmitz, N., Annable, L. and Boksa, P. (2012) Publication bias: What are the challenges and can they be overcome? Journal of Psychiatry & Neuroscience : JPN. [Online] 37 (3), 149-152. Available at: doi:10.1503/jpn.120065.</small>
+<small>Joober, R., Schmitz, N., Annable, L. and Boksa, P. (2012) _Publication bias: What are the challenges and can they be overcome?_ Journal of Psychiatry & Neuroscience : JPN. [Online] 37 (3), 149-152. Available at: doi:10.1503/jpn.120065.</small>
 
-Do publication pressures cause a tendency to produce only psoitive results?
+Do publication pressures cause a tendency to produce only positive results?
 
 
 Reason 1: Publication Bias (Joober 2012)
