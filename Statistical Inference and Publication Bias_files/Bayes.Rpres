@@ -200,7 +200,7 @@ Standardised mean difference effect size
 * medium 0.5
 * large 0.8
 
-Confidence Interval (off effect size)
+Confidence Interval (of effect size)
 ========================================================
 What does a 95% confidence interval of the effect size mean?
 
