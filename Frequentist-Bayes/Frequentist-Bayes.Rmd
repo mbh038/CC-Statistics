@@ -3,7 +3,23 @@ title: "Frequentist and Bayesian Analysis of Same Data"
 author: "Michael Hunt"
 date: "January 27, 2016"
 output: html_document
+
+
+
 ---
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { 
+      equationNumbers: {
+ 
+            autoNumber: "all",
+            formatNumber: function (n) {return ''+n}
+      } 
+  }
+});
+</script>
 
 Suppose that 1% of the population has a particular medical condition.
 
@@ -149,15 +165,16 @@ __Q17__ From the numbers you have already calculated, find the probability $P(A|
 
 __Q18__ This probability, $P(A|+)$ is a __Bayesian__ result. It can be expressed in the form:
 
+
 $$P(A|+)=\dfrac{P(+|A)\cdot P(A)}{P(+)}$$
 
-We know all the terms on the right hand side of this equation. Use these values to calculate $P(A|+)$ and check that it agrees with your result from Q17.
+We know all the terms on the right hand side of this equation. Use these values to calculate $P(A|+)$ and check that it agrees with your result from Q1
 
-This is arguably a more interesting result than the p-value in that it tells us about the probability of our hypothesis (A, that the person has the condition) given an experimental result (+, that the test had a positive outcome), rather than about the probability of a set of data, given a hypothesis.  
+This true positive (TP) result is arguably a more interesting result than the p-value in that it tells us about the probability of our hypothesis (A, that the person has the condition) given an experimental result (+, that the test had a positive outcome), rather than about the probability of a set of data, given a hypothesis.  
 
 This result $P(+|A)$ is called a _posterior_ result, in that it is what we _now_ know about the probability of someone having the disease, _given_ that a test has been carried out and had a positive result. 
 
-However, notice that the term $P(A)$ appears in the expression.This is _prior_ knowledge that has not emerged from doing the test. We had to know this already. It is called the prior term in that it representats what we could say about the likelihood of someone having the condition _before_ we had tested them.
+However, notice that the term $P(A)$ appears in the expression.This is _prior_ knowledge that has not emerged from doing the test. We had to know this already. It is called the prior term in that it represents what we could say about the likelihood of someone having the condition _before_ we had tested them.
 
 One could argue that this inclusion of prior knowledge is both a strength and a weakness of the Bayesian approach. Here, we might be very confident that we know $P(A)$, the prevalence of the condition,  from a host of independent studies that might have been carried out.
 
@@ -168,21 +185,69 @@ __Q17__ Are you surprised at the low value of $P(A|+)$? We had a test with high 
 
 Why is this?  
   
-It is because in this case the _prior_ term $P(A)$ is so low.
+At least in part it is because in this case the _prior_ term $P(A)$ is so low.
 
-Let us see how much higher the likehood of their being a real effect is, given a positive result, if the prevalence is much higher:
+Let us see how much higher the likelihood of their being a real effect is, given a positive result from the same test, if the prevalence is much higher:
 
-Calculate P(A|+) if the prevalence of the condition is in fact, or least is thought to be, 0.7.
+Calculate P(A|+) if the prevalence of the condition is in fact, or least is thought to be, 0.7, given the same power and specificity (0.8 and 0.96 of the test)
 
 ***
 
-A way to think about this is in terms of hypotheses. Suppose we have a hypothesis A, and a test for that hpothesis that can have two outcomes: + (A is verified, and we reject the null hypothesis $\bar{A}$) or - (A is not verified and we do not reject the null hypothesis). In that case, $P(A)$, what we have called the prior, represents our assessment of how likely it is that A is correct, before we carry out our test, and P(A|+), what we have called the posterior, represents our new assessment of the likelihood that A is correct, having done the test and got a positive result. The Bayesian expression shows us that the less likely we think it is that our hypothesis is true (eg prevalence of disease is very low) before we do our test, then the less likely it is that a postive result of the test indicates a real effect. In contrast, if we think it likely that our hypothesis _is_ true before we do the test (eg prevalence of disase is high) then it is more likely that a positive test result _has_ revealed a real effect.
+A way to think about this is in terms of hypotheses. Suppose we have a hypothesis A, and a test for that hypothesis that can have two outcomes: + (A is verified, and we reject the null hypothesis $\bar{A}$) or - (A is not verified and we do not reject the null hypothesis). In that case, $P(A)$, what we have called the prior, represents our assessment of how likely it is that A is correct, before we carry out our test, and P(A|+), what we have called the posterior, represents our new assessment of the likelihood that A is correct, having done the test and got a positive result. The Bayesian expression shows us that the less likely we think it is that our hypothesis is true (eg prevalence of disease is very low) before we do our test, then the less likely it is that a positive result of the test indicates a real effect. In contrast, if we think it highly likely that our hypothesis _is_ true before we do the test (eg prevalence of disase is high) then it is more likely that a positive test result _has_ revealed a real effect.
 
 ### The Bayes Factor
+
+####Odds
 We can explore this idea futher using the concept of _odds_, a term commonly used in betting.
 
-It would be nice to know, after an experiment in which we 
+Suppose a trial has two possible outcomes $A$ and $\bar{A}$. The trial could be, for example, tossing a coin, or rolling a die, or finding out if someone has a disease, and the outcomes in these cases would be heads or tails for the coin toss, a six or anything but a six, for example, for the die roll, or yes they do have the disease, or no they don't.
+
+In each case, if one of the possible outcomes has probability $p$, then the other outcome must have probability $1-p$, since the two probabilities must add up to one.
+
+The odds of getting one outcome rather than the other is the ratio of the probabilities of getting each:
+
+$$\mathrm{Odds\ }=\dfrac{P(1)}{P(2)}=\dfrac{p}{1-p}$$
+
+This is a measure of how much more or less likely outcome 1 is than outcome 2. Thus if there were a 0.25 chance of getting outcome 1, there would be a 0.75 chance of getting outcome 2, and the odds would be 1 to 3 : outcome 1 is three times less likely than outcome 2. For the toss of a fair coin, where each of the possible outcomes has probability 0.5, the odds would be 1: each outcome is likely as the other.
+
+It would be nice to know, after an experiment in which we get a positive result, whether it is more likely than not that there is a real effect, or more likely than not that there isn't one. Or, put another way, to have an idea as to how to design our investigation such that afterwards, if we get a positive result, and we think we have detected an effect, we can say that it is more likely than not that that effect is real, and could be reproduced by another investigator.
+
+Consider equation (1), our Bayesian expression for the probability $P(A|+)$ that there is a real effect, given a positive outcome of our measurement. The equivalent expression for the false positive rate (FP), which is the probability $P(\bar{A}|+)$ that we get a positive outcome of our test despite that nothing is going on (the person is healthy), is
+
+$$P(\bar{A}|+)=\dfrac{P(+|\bar{A})\cdot P(\bar{A})}{P(+)}$$
+
+If we now divide equation (1) by equation (3), the $P(+)$ terms cancel and we are left with:
 
 
+$$\dfrac{P(A|+)}{P(\bar{A}|+)}=\dfrac{P(+|A)}{P(+|\bar{A})}\cdot \dfrac{P(A)}{P(\bar{A})}$$
 
 
+On the left we have a ratio of the probability of a correct positive result to that of an incorrect positive result. Since, given a positive result, it must either be correct or incorrect, this is an odds ratio, where the two conditional probabilities must add up to one. Moreover, this is the _posterior odds_, which is a measure, _following the experiment, given a positive result_, of how much more likely it is that the result is correct than incorrect. We could also think of this as a measure, following a positive result, of how much more likely we think it is that the alternate hypothesis $A$ is correct than the null hypothesis $\bar{A}$.
+
+On the right hand side we have two terms, one of them $\dfrac{P(A)}{P(\bar{A})}$ is also an odds ratio. We call it the _prior odds_ since it a ratio of the probabilities we can assign to the alternate hypothesis $A$ (eg the person is ill, there is an effect) and the the null hypothesis (there is nothing going on, the person is fine, there is no effect), _before we have done the experiment_.
+
+Thus the other term on the right:
+
+$$\dfrac{P(+|A)}{P(+|\bar{A})}$$
+
+can be thought of as the factor by which our confidence in the truth of the alternate hypothesis has been enhanced by our doing the experiment, if we get a positive result. This is sometimes called the __Bayes factor__. We would like this to be as high as possible, and certianly to greater than one, or what is the point of doing the experiment? If we unpick it, we that the term on the top $P(+|A)$ is the sensitivity, or power of our experiment - the likelihood that, if there is an effect, we will detect it. We could call it the True Positive Rate (TPR). The term on the bottom, $P(+|\bar{A})$, is the False Positive Rate (FPR), which is one minus the specificity. hence we can write:
+
+$$
+\begin{align}
+\mathrm{Posterior\ odds} &= \mathrm{Bayes\ Factor}\times\mathrm{Prior\ odds}\\
+&=\left(\dfrac{\mathrm{power}}{\mathrm{1-specificity}}\right)\times\mathrm{Prior\ odds}
+\end{align}
+$$
+
+Not surprisingly, perhaps, this tells us that for our confidence in the truth of a hypothesis to be enhnanced by an experiment, this is best done by designing the experiment such that it has both high power and high specificity.
+
+### We detect an effect. Is our result more likely right than wrong?
+In terms of the framework that we have developed here, this question is the same as asking whether our posterior odds are at least equal to one. Have we got even odds or better? By design and by independent measurement we might be able to quantify the Bayes factor. It might be less easy to quantify the prior odds, but let us consider the difference between cases where the prior odds were in fact very low, and those where they were high.
+
+For example, suppose, as we have here, that our alternate hypothesis is that someone has a disease, and our experiment is to carry out a test for that disease. Following a positive test result, is it more likely than not that the person actually has the disease? Or, put another way, is it more likely than not that the result is correct? Consider a case where the disease is very rare. Suppose 1 person in 1000 has this disease. In that case, our prior odds are 1 in 999, so for posterior odds that are at least evens, we need a Bayes factor of 999. If we had designed our experiment to have a power of 0.8, then this means, if you do the maths, that a specificity of 0.999 is required. Hence, an experimental procedure is required that has a false positive rate of only one part in a thousand.
+
+If one other hand, the disease is much more prevalent, with a prior odds of 0.5, say, then the Bayes Factor only needs to be equal to 2 or more for evens or better posterior odds, so that, if the power of our test is again 0.8, we could achieve this despite a much higher false positive rate of 0.4. 
+
+### Extraordinary Claims Require Extraordinary Evidence
+
+This is an oft repeated phrase, but we can understand it in terms of the framework we have developed here. Suppose I do an experiment and claim, on the basis of my results, to have found evidence for astrology, homeopathy or extra sensory perception or such-like. The scientific community could reasonably ask, given my result, how much more likely is it that my claim is correct than that it is wrong. Or, alternatively, if these posterior odds are to be evens or better, how great the Bayes Factor of my experiment would need to be. Now the answer to that, we have seen, is that it should be the inverse of my prior odds. If these are tiny, then my Bayes factor needs to be huge.  A few back of the envelope calculations suffices to show that, if Newtonian mechanics is correct, the claims of astrology are, indeed, extraordinary. A vast web of interconnected ideas for which there is overwhelming evidence would have to be wrong if the astrological claims were to be right. Thus the prior odds are tiny, and so the Bayes Factor of my test needs to be huge if my result, claiming to have detected a real astrological effect, is to be at all credible. My extraordinary claim would require extraordinary evidence for there to be an evens chance of it being correct. 
