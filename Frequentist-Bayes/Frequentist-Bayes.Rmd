@@ -1,0 +1,188 @@
+---
+title: "Frequentist and Bayesian Analysis of Same Data"
+author: "Michael Hunt"
+date: "January 27, 2016"
+output: html_document
+---
+
+Suppose that 1% of the population has a particular medical condition.
+
+Let us describe the state of having the condition as "$A$".
+
+Thus $P(A) = 0.01$    -   which means "the probability of being in state $A$ is 0.01"
+
+Since you either have the medical condition or you do not, the two probabilities, that of having the condition $P(A)$, and that of not having it, $P\bar{A}$), must add up to one.
+
+Hence $P(\bar{A}) = 1 - P(A) = 1 - 0.01 = 0.99$
+
+where $\bar{A}$ means "$\mathrm{not}\ A$".  
+
+***  
+
+__Q1__ What is the prevalence of this medical condition? __________________________  
+
+***
+
+This prevalence is our prior knowledge of the "state" of a person. It is the probability that someone has the disease, prior to any test being carried out. Later, we will see that we need to know this,  as well as details of the test, in order to calculate the posterior - the conditional probability $P(+|A)$ that an individual has the disease given that a test has been carried out and yielded a positive result.
+
+Now suppose we have a test for the presence of $A$. The outcome of this test is either positive $(+)$ or negative $(-)$.
+
+If a person has the condition, the chance that our test will correctly detect it and give a positive $(+)$ result  is 0.8.
+
+If a person does not have the condition, the chance that our test will correctly detect that and give a negative result $(-)$ is 0.96.  
+
+***  
+
+__Q2__  What is the _sensitivity_ of this test ? _________________________________  
+
+***
+
+__Q3__ What is the _specificity_ of this test ? _________________________________  
+  
+***
+
+Now let us introduce the idea of conditional probabilities - the probability that  one outcome is true given that another oucome is true. We write this as:
+
+$P(\mathrm{state\ } 1 | \mathrm{state\ } 2)$  -- which means "the probability that state 1 is true _given_ that state 2 is true"
+
+__Q4__ What is meant by the expression $P(+|A)$ ? Is it:
+
+1. The probability that a person has the condition (regardless of the outcome of any test)
+2. The probability of getting a positive test result given that the person actually has the condition
+3. The probability of getting a positive test result (regardless of whether the person actually has the condition)
+4. The probability that a person has the condition, given that the outcome of a test was positive
+
+***
+
+__Q5__ In our example, what are the values of :
+
+* $P(+|A)$  
+* $P(+|\bar{A})$  
+* $P(-|A)$  
+* $P(-|\bar{A})$ 
+
+***
+
+__Q6__ Use arrows to match the expressions in Q5 to the terms in the list on the right, and fill in the corresponding values:  
+
+Expression   | Term | Value
+--|--|--
+$P(+|A)$ | specificity |
+|||
+$P(+|\bar{A})$ | sensitivity |
+$P(-|A)$ | power |
+$P(-|\bar{A})$ | Type I error rate $\alpha$ |
+   || Type II error rate $\beta$ |
+
+***
+
+__Q7__ What is the power of the test  in terms of the Type II error rate $\beta$?
+
+***
+
+__Q8__ Complete the tree diagram below with all of the terms and numbers used so far.
+
+ ![](tree.png)
+
+***
+
+In the example shown, think of $P(+|\bar{A})$)  as the probability that someone follows the $+$ branch, given that they have already followed the $\bar{A}$ branch.
+
+__Q8__ If a random person walks into a clinic they may or may not have the condition A, and if they are tested, the outcome may or may not be positive. So there  are four possible outcomes, corresponding to the four branches of the tree diagram:
+
+Assign each of these outcomes to the correct number row on the right in the diagram above
+
+
+Outcome | Final branch of tree diagram
+--|--
+A person is healthy AND tests positive ||
+A person is healthy AND tests negative ||
+A person is ill AND tests positive ||
+A person is ill AND tests negative ||
+
+***
+
+__Q9__ In hypothesis testing, in the frequentist approach, all we have after a test is the outcome of the test itself, and any knowledge we have as to the efficacy of the test. Suppose after testing an individual we get a positive result. and we claim that we have a _p_-value that is below our chosen significance threshold of 0.05, so that we have, we claim, a "statistically significant" result.
+
+Remember that _p_ values tell us the probability that we would have got a particular experimental result given that the null hypothesis is true.
+
+__Q10__ What would be an appropriate null hypothesis in this case?
+
+__Q11__ This _p_-value, as usually defined, would tell us which of these probabilities:
+
+* The probability that the person had the condition, given the positive result
+* The probability that they were healthy, given the positive result
+* The probability that we would have got this positive result, if they were healthy
+* The probability that we would have got this positive result if they had the condition
+
+__Q12__ Given the numbers above, what is the p-value for a positive test result, given that the person has the disease?
+  
+
+__Q13__ Of the options listed in Q11, which is the result that is really of interest?
+  
+  
+Let us try to calculate this result. To do this, we will calculate the probabilities of each of the four possible outcomes:
+
+__Q14__ Calculate the probabilites of each of the outcomes 1 to 4, given a randomly selected individual who has not yet been tested.  
+In doing this you will be using the result: 
+  
+$\mathrm{Probability\ of\ A\ AND\ B} = P (A \cap B) = P(A|B) \times P(B) = P(B|A) \times P(A)$  
+  
+For, example, the probability of outcome 1 is the probability that someone has the condition AND that they have tested positive: This probability is the product of the probabilities of the two successive choices that were made in the journey along the tree from left to right. 
+
+$P(1) = P(A \cap +) = P(A) × P(+|A) = 0.01 ×\times 0.8 = 0.008$ 
+  
+$P(2) =$ 
+  
+$P(3) =$  
+  
+$P(4) =$  
+  
+__Q15__ Check that $P(1) + P(2) + P(3) + P(4) = 1$.  
+Why must this be the case?
+
+__Q16__ What is the probability $P(+)$ of getting a positive result, regardless of whether the person is healthy or has the condition?
+(Hint: this is the sum of two of the outcomes you calculate in Q14.)
+
+__Q17__ From the numbers you have already calculated, find the probability $P(A|+)$ that someone who has tested positive does have the condition. This is the same as asking "what proportion of those who test positive actually have the condition?"
+(Hint: you can find this using the two values that you used in Q16)
+
+__Q18__ This probability, $P(A|+)$ is a __Bayesian__ result. It can be expressed in the form:
+
+$$P(A|+)=\dfrac{P(+|A)\cdot P(A)}{P(+)}$$
+
+We know all the terms on the right hand side of this equation. Use these values to calculate $P(A|+)$ and check that it agrees with your result from Q17.
+
+This is arguably a more interesting result than the p-value in that it tells us about the probability of our hypothesis (A, that the person has the condition) given an experimental result (+, that the test had a positive outcome), rather than about the probability of a set of data, given a hypothesis.  
+
+This result $P(+|A)$ is called a _posterior_ result, in that it is what we _now_ know about the probability of someone having the disease, _given_ that a test has been carried out and had a positive result. 
+
+However, notice that the term $P(A)$ appears in the expression.This is _prior_ knowledge that has not emerged from doing the test. We had to know this already. It is called the prior term in that it representats what we could say about the likelihood of someone having the condition _before_ we had tested them.
+
+One could argue that this inclusion of prior knowledge is both a strength and a weakness of the Bayesian approach. Here, we might be very confident that we know $P(A)$, the prevalence of the condition,  from a host of independent studies that might have been carried out.
+
+More generally, however, $P(A)$ might be taken to represent the likelihood we assign to the probability that some prior condition is true. Two researchers might disagree about this. They might use their knowledge of the field, of mechanisms, of the number of supporting results and so on. However the value of $P(A)$ might be a judgement, or at least involve some element of subjective judgement, and that is why many, those in the frequentist camp, might object to the Bayesian approach.
+
+
+__Q17__ Are you surprised at the low value of $P(A|+)$? We had a test with high power (0.8) and yet, despite a positive result, it emerges that the person is still much more likely not to have the disease than to have it. More generally, you can think of this as being an example of where we have done an experiment, with high power, detected an effect, and yet it is much more likely than not, despite this, that there is in fact no real effect.
+
+Why is this?  
+  
+It is because in this case the _prior_ term $P(A)$ is so low.
+
+Let us see how much higher the likehood of their being a real effect is, given a positive result, if the prevalence is much higher:
+
+Calculate P(A|+) if the prevalence of the condition is in fact, or least is thought to be, 0.7.
+
+***
+
+A way to think about this is in terms of hypotheses. Suppose we have a hypothesis A, and a test for that hpothesis that can have two outcomes: + (A is verified, and we reject the null hypothesis $\bar{A}$) or - (A is not verified and we do not reject the null hypothesis). In that case, $P(A)$, what we have called the prior, represents our assessment of how likely it is that A is correct, before we carry out our test, and P(A|+), what we have called the posterior, represents our new assessment of the likelihood that A is correct, having done the test and got a positive result. The Bayesian expression shows us that the less likely we think it is that our hypothesis is true (eg prevalence of disease is very low) before we do our test, then the less likely it is that a postive result of the test indicates a real effect. In contrast, if we think it likely that our hypothesis _is_ true before we do the test (eg prevalence of disase is high) then it is more likely that a positive test result _has_ revealed a real effect.
+
+### The Bayes Factor
+We can explore this idea futher using the concept of _odds_, a term commonly used in betting.
+
+It would be nice to know, after an experiment in which we 
+
+
+
+
