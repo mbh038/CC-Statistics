@@ -3,6 +3,7 @@ title: "Frequentist and Bayesian Analysis of Same Data"
 author: "Michael Hunt"
 date: "January 27, 2016"
 output: html_document
+bibliography: bibliography.bib
 
 
 
@@ -168,7 +169,7 @@ __Q18__ This probability, $P(A|+)$ is a __Bayesian__ result. It can be expressed
 
 $$P(A|+)=\dfrac{P(+|A)\cdot P(A)}{P(+)}$$
 
-We know all the terms on the right hand side of this equation. Use these values to calculate $P(A|+)$ and check that it agrees with your result from Q1
+We know all the terms on the right hand side of this equation. Use these values to calculate $P(A|+)$ and check that it agrees with your result from Q17
 
 This true positive (TP) result is arguably a more interesting result than the p-value in that it tells us about the probability of our hypothesis (A, that the person has the condition) given an experimental result (+, that the test had a positive outcome), rather than about the probability of a set of data, given a hypothesis.  
 
@@ -248,15 +249,17 @@ For example, suppose, as we have here, that our alternate hypothesis is that som
 
 In reality, the false positive rate for a real test would likely be greater than that, so that the posterior odds for a rare condition, while greater than the prior odds, could still be much less than one, despite a positive result. 
 
-If this seems counter intutive, consider the case of breast cancer among women in their forties, and the question of whether to routinely screen for this using mammograms. The prevalence of this condition among this group is about 1.4 %, so that the prior odds for beast cancer among this group would be $\frac{0.014}{0.986}=0.014$. The specificty of a mammogram is about 0.9 - that is, if a woman does not have breast cancer, then a mammogram will incorrectly claim that she does about 10% of the time. On the other had, if she does have breast cancer, a mammogram will correctly show this about 75% of the time, so that the sensitivity or power of the test is 0.75. Thus the Bayes Factor in this case is $\frac{0.75}{0.1}=7.5$. The posterior odds, therefore, given a postive test result are $7.5\times0.014=0.10$ - about 10%. [citation to Nate Silver needed]
+If this seems counter intutive, consider the case of breast cancer among women in their forties, and the question of whether to routinely screen for this using mammograms. The prevalence of this condition among this group is about 1.4 %, so that the prior odds for beast cancer among this group would be $\frac{0.014}{0.986}=0.014$. The specificty of a mammogram is about 0.9 - that is, if a woman does not have breast cancer, then a mammogram will incorrectly claim that she does about 10% of the time. On the other had, if she does have breast cancer, a mammogram will correctly show this about 75% of the time, so that the sensitivity or power of the test is 0.75. Thus the Bayes Factor in this case is $\frac{0.75}{0.1}=7.5$. The posterior odds, therefore, given a postive test result are $7.5\times0.014=0.10$ - about 10%. [@Silver2013]
 
 If one other hand, the disease is much more prevalent, with a prior odds of 0.5, say, then the Bayes Factor only needs to be equal to 2 or more for evens or better posterior odds, so that, if the power of our test is again 0.8, we could achieve this despite a much higher false positive rate of 0.4. 
 
-## Are most published research results wrong?
-This is the startling claim made by medical researcher John Ioannidis in his 2005 paper "Why Most Published Research Findings are False". 
+### Are most published research results wrong?
+This is the startling claim made by medical researcher John Ioannidis in his 2005 paper "Why Most Published Research Findings are False" [@Ioannidis2005]. The analysis by which he arrives at this claim follows, broadly the steps taken above, and thus his calim is in fact that the posterior odds of most published results are less than one. This is the result, he suggests, of researchers operating in fields where the prior odds are low, and often, in addition, because experiments are corried out even though they have low power.
+
+His result has been contested, for example by Jeff Leek 
 
 ### Extraordinary Claims Require Extraordinary Evidence
 
 This is an oft repeated phrase, but we can understand it in terms of the framework we have developed here. Suppose I do an experiment and claim, on the basis of my results, to have found evidence for astrology, homeopathy, extra sensory perception or such-like. The scientific community could reasonably ask, given my result, how much more likely is it that my claim is correct than that it is wrong. Or, alternatively, if these posterior odds are to be evens or better, how great the Bayes Factor of my experiment would need to be. Now the answer to that, we have seen, is that it should be the inverse of my prior odds. If these are tiny, then my Bayes factor needs to be huge.  A few back of the envelope calculations suffices to show that, if Newtonian mechanics is correct, the claims of astrology are, indeed, extraordinary. A vast web of interconnected ideas for which there is overwhelming evidence would have to be wrong if the astrological claims were to be right. Thus the prior odds are tiny, and so the Bayes Factor of my test needs to be huge if my result, claiming to have detected a real astrological effect, is to be at all credible. My extraordinary claim would require extraordinary evidence for there to be an evens chance of it being correct. 
 
-
+### References
