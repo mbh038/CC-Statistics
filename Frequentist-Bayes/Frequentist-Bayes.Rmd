@@ -6,6 +6,7 @@ output: html_document
 bibliography: bibliography.bib
 ---
 
+`
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -19,6 +20,12 @@ MathJax.Hub.Config({
 });
 </script>
 
+```{r global_options, include=FALSE}
+rm(list=ls()) ### To clear namespace
+library(knitr)
+opts_chunk$set(fig.width=12, fig.height=8, fig.path='Figs/',
+               echo=TRUE, warning=FALSE, message=FALSE)
+```
 Suppose that 1% of the population has a particular medical condition.
 
 Let us describe the state of having the condition as "$A$".
@@ -32,10 +39,14 @@ Hence $P(\bar{A}) = 1 - P(A) = 1 - 0.01 = 0.99$
 where $\bar{A}$ means "$\mathrm{not}\ A$".  
 
 ***  
-
 __Q1__ What is the prevalence of this medical condition? __________________________  
 
 ***
+```{r}
+PA<-0.01
+char<-c("The prevalence of a condition is the proportion of a population that has the condition.Here the value is")
+cat(as.symbol(char[1]),PA)
+```
 
 This prevalence is our prior knowledge of the "state" of a person. It is the probability that someone has the disease, prior to any test being carried out. Later, we will see that we need to know this,  as well as details of the test, in order to calculate the posterior - the conditional probability $P(+|A)$ that an individual has the disease given that a test has been carried out and yielded a positive result.
 

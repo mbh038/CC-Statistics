@@ -68,6 +68,7 @@ img {
 </div>
 
 
+<p>`</p>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   TeX: { 
@@ -88,6 +89,10 @@ MathJax.Hub.Config({
 <hr />
 <p><strong>Q1</strong> What is the prevalence of this medical condition? __________________________</p>
 <hr />
+<pre class="r"><code>PA&lt;-0.01
+char&lt;-c(&quot;The prevalence of a condition is the proportion of a population that has the condition.Here the value is&quot;)
+cat(as.symbol(char[1]),PA)</code></pre>
+<pre><code>## The prevalence of a condition is the proportion of a population that has the condition.Here the value is 0.01</code></pre>
 <p>This prevalence is our prior knowledge of the “state” of a person. It is the probability that someone has the disease, prior to any test being carried out. Later, we will see that we need to know this, as well as details of the test, in order to calculate the posterior - the conditional probability <span class="math">\(P(+|A)\)</span> that an individual has the disease given that a test has been carried out and yielded a positive result.</p>
 <p>Now suppose we have a test for the presence of <span class="math">\(A\)</span>. The outcome of this test is either positive <span class="math">\((+)\)</span> or negative <span class="math">\((-)\)</span>.</p>
 <p>If a person has the condition, the chance that our test will correctly detect it and give a positive <span class="math">\((+)\)</span> result is 0.8.</p>
