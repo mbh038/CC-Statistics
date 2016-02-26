@@ -2,7 +2,7 @@
 title: "Frequentist and Bayesian Analysis of Same Data"
 author: "Michael Hunt"
 date: "January 27, 2016"
-output: html_document
+output: pdf_document
 bibliography: bibliography.bib
 ---
 
@@ -18,13 +18,10 @@ MathJax.Hub.Config({
 });
 </script>
 
-showAnswers=TRUE
-
 ```{r setup,include=FALSE}
 rm(list=ls()) ### To clear namespace
 library(knitr)
-library(crayon)
-knitr::opts_chunk$set(fig.width=12, fig.height=8, fig.path='Figs/',include=TRUE,echo=FALSE, warning=FALSE, message=FALSE,showAnswers=TRUE,results= 'asis')
+knitr::opts_chunk$set(fig.width=12, fig.height=8, fig.path='Figs/',include=TRUE,echo=FALSE, warning=FALSE, message=FALSE)
 ```
 
 ```{r}
@@ -43,18 +40,16 @@ Hence $P(\bar{A}) = 1 - P(A) = 1 - 0.01 = 0.99$
 
 where $\bar{A}$ means "$\mathrm{not}\ A$".  
 
-***
-```{r,include=TRUE}
+
+```{r,include=TRUE,font=2}
 qcount=qcount+1
-cat("<b>Q</b>",qcount,": What is the <b>prevalence</b> of this medical condition?\n",sep="")
+cat("Q",qcount," ","What is the prevalence of this medical condition?\n",sep="")
 ```
 
-```{r results = 'asis'}
-PA<-"0.01"
-cat("<b>A</b>",qcount,"The prevalence of a condition is the proportion of a population that has the condition. Here the value is:" %+% "0.01",sep="")
+```{r}
+PA<-0.01
+cat("The prevalence of a condition is the proportion of a population that has the condition.Here the value is\n",PA)
 ```
-
-***
 
 This prevalence is our prior knowledge of the "state" of a person. It is the probability that someone has the disease, prior to any test being carried out. Later, we will see that we need to know this,  as well as details of the test, in order to calculate the posterior - the conditional probability $P(+|A)$ that an individual has the disease given that a test has been carried out and yielded a positive result.
 
@@ -64,98 +59,57 @@ If a person has the condition, the chance that our test will correctly detect it
 
 If a person does not have the condition, the chance that our test will correctly detect that and give a negative result $(-)$ is 0.96.  
 
-***
-
-```{r,include=TRUE}
+```{r,include=TRUE,font=2}
 qcount=qcount+1
-cat("<b>Q</b>",qcount," ","What is the <b>sensitivity</b> of this test?\n",sep="")
+cat("Q",qcount," ","What is the sensitivity of this test?\n",sep="")
 ```
 
 ```{r}
-cat("<b>A</b>",qcount,"The sensitivity of the test is the chance that our test will detect the condition in someone who has it. It is 0.08\n",sep="")
+cat("The sensitivity of the test is the chance that our test will detect the condition in someone who has it. It is 0.8\n")
 ```
 
-***
-
-```{r,include=TRUE}
+```{r,include=TRUE,font=2}
 qcount=qcount+1
-cat("<b>Q</b>",qcount," ","What is the <b>specificity</b> of this test?\n",sep="")
+cat("Q",qcount," ","What is the specificity of this test?\n",sep="")
 ```
 
 ```{r}
-cat("<b>A</b>",qcount,"The specificity of the test is the chance that our test will correctly detect that someone does not have the condition. It is 0.96\n",sep="")
+cat("The specificity of the test is the chance that our test will correctly detect that someone does not have the condition. It is 0.96\n")
 ```
 
-***
 
 Now let us introduce the idea of conditional probabilities - the probability that  one outcome is true given that another oucome is true. We write this as:
 
 $P(\mathrm{state\ } 1 | \mathrm{state\ } 2)$  -- which means "the probability that state 1 is true _given_ that state 2 is true"
 
+__Q4__ What is meant by the expression $P(+|A)$ ? Is it:
 
-***
-```{r,include = TRUE}
-qcount=qcount+1
-cat(
-"<b>Q</b>",qcount,": What is meant by the expression $P(+|A)$ ? Is it:\n
-1. The probability that a person has the condition (regardless of the outcome of any test)\n
-2. The probability of getting a positive test result given that the person actually has the condition\n
-3. The probability of getting a positive test result (regardless of whether the person actually has the condition)\n
-4. The probability that a person has the condition, given that the outcome of a test was positive\n
-",sep="")
-```
-
-```{r}
-cat("<b>A</b>",qcount,": 2. The probability of getting a positive test result given that the person actually has the condition\n",sep="")
-```
+1. The probability that a person has the condition (regardless of the outcome of any test)
+2. The probability of getting a positive test result given that the person actually has the condition
+3. The probability of getting a positive test result (regardless of whether the person actually has the condition)
+4. The probability that a person has the condition, given that the outcome of a test was positive
 
 ***
 
-```{r,include = TRUE}
-qcount=qcount+1
-cat(
-"<b>Q</b>",qcount,": In our example, what are the values of:\n
-1. $P(+|A)$\n  
-2. $P(+|\\bar{A})$\n  
-3. $P(-|A)$\n  
-4. $P(-|\\bar{A})$\n 
-",sep="")
-```
+__Q5__ In our example, what are the values of :
 
-```{r}
-cat("<b>A</b>",qcount,":\n
-1. $P(+|A)$ = sensitivity = 0.8\n
-2. $P(+|\\bar{A})$ = 1 - specificity = 0.04\n  
-3. $P(-|A)$ = 1 - sensitivity = 0.2\n  
-4. $P(-|\\bar{A})$ = specificity = 0.96\n
-    ",sep="")
-```
+* $P(+|A)$  
+* $P(+|\bar{A})$  
+* $P(-|A)$  
+* $P(-|\bar{A})$ 
 
 ***
 
-```{r,include = TRUE}
-qcount=qcount+1
-cat(
-"<b>Q</b>",qcount,": Which of the expressions in <b>Q</b>",qcount-1," correspond to the following terms:\n
+__Q6__ Use arrows to match the expressions in Q5 to the terms in the list on the right, and fill in the corresponding values:  
 
-1. Type 1 error rate $\\alpha$ \n  
-2. Type 2 error rate $\\beta$\n  
-3. Power $=P(+|A)$\n  
-",sep="")
-```
-
-
-***
-
-```{r}
-cat(
-"<b>A</b>",qcount,":\n
-
-1. Type 1 error rate $\\alpha = P(+|\\bar{A})$ : a positive result when the truth is negative\n  
-2. Type 2 error rate $\\beta = P(-|A)$ ; a negative result when the truth is positive\n  
-3. Power $=P(+|A)$ =sensitivity  : the chance that a person who is positive will test positive = the chance that a real effect will be detected.\n
-",sep="")
-```
+Expression   | Term | Value
+--|--|--
+$P(+|A)$ | specificity |
+|||
+$P(+|\bar{A})$ | sensitivity |
+$P(-|A)$ | power |
+$P(-|\bar{A})$ | Type I error rate $\alpha$ |
+   || Type II error rate $\beta$ |
 
 ***
 

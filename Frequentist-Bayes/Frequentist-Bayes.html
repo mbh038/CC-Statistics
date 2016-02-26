@@ -68,7 +68,6 @@ img {
 </div>
 
 
-<p>`</p>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   TeX: { 
@@ -80,6 +79,7 @@ MathJax.Hub.Config({
   }
 });
 </script>
+<p>showAnswers=TRUE</p>
 <p>Suppose that 1% of the population has a particular medical condition.</p>
 <p>Let us describe the state of having the condition as “<span class="math">\(A\)</span>”.</p>
 <p>Thus <span class="math">\(P(A) = 0.01\)</span> - which means “the probability of being in state <span class="math">\(A\)</span> is 0.01”</p>
@@ -87,75 +87,60 @@ MathJax.Hub.Config({
 <p>Hence <span class="math">\(P(\bar{A}) = 1 - P(A) = 1 - 0.01 = 0.99\)</span></p>
 <p>where <span class="math">\(\bar{A}\)</span> means “<span class="math">\(\mathrm{not}\ A\)</span>”.</p>
 <hr />
-<p><strong>Q1</strong> What is the prevalence of this medical condition? __________________________</p>
+<p><b>Q</b>1: What is the <b>prevalence</b> of this medical condition?</p>
+<p><b>A</b>1The prevalence of a condition is the proportion of a population that has the condition. Here the value is:0.01</p>
 <hr />
-<pre class="r"><code>PA&lt;-0.01
-char&lt;-c(&quot;The prevalence of a condition is the proportion of a population that has the condition.Here the value is&quot;)
-cat(as.symbol(char[1]),PA)</code></pre>
-<pre><code>## The prevalence of a condition is the proportion of a population that has the condition.Here the value is 0.01</code></pre>
 <p>This prevalence is our prior knowledge of the “state” of a person. It is the probability that someone has the disease, prior to any test being carried out. Later, we will see that we need to know this, as well as details of the test, in order to calculate the posterior - the conditional probability <span class="math">\(P(+|A)\)</span> that an individual has the disease given that a test has been carried out and yielded a positive result.</p>
 <p>Now suppose we have a test for the presence of <span class="math">\(A\)</span>. The outcome of this test is either positive <span class="math">\((+)\)</span> or negative <span class="math">\((-)\)</span>.</p>
 <p>If a person has the condition, the chance that our test will correctly detect it and give a positive <span class="math">\((+)\)</span> result is 0.8.</p>
 <p>If a person does not have the condition, the chance that our test will correctly detect that and give a negative result <span class="math">\((-)\)</span> is 0.96.</p>
 <hr />
-<p><strong>Q2</strong> What is the <em>sensitivity</em> of this test ? _________________________________</p>
+<p><b>Q</b>2 What is the <b>sensitivity</b> of this test?</p>
+<p><b>A</b>2The sensitivity of the test is the chance that our test will detect the condition in someone who has it. It is 0.08</p>
 <hr />
-<p><strong>Q3</strong> What is the <em>specificity</em> of this test ? _________________________________</p>
+<p><b>Q</b>3 What is the <b>specificity</b> of this test?</p>
+<p><b>A</b>3The specificity of the test is the chance that our test will correctly detect that someone does not have the condition. It is 0.96</p>
 <hr />
 <p>Now let us introduce the idea of conditional probabilities - the probability that one outcome is true given that another oucome is true. We write this as:</p>
 <p><span class="math">\(P(\mathrm{state\ } 1 | \mathrm{state\ } 2)\)</span> – which means “the probability that state 1 is true <em>given</em> that state 2 is true”</p>
-<p><strong>Q4</strong> What is meant by the expression <span class="math">\(P(+|A)\)</span> ? Is it:</p>
+<hr />
+<p><b>Q</b>4: What is meant by the expression <span class="math">\(P(+|A)\)</span> ? Is it:</p>
 <ol style="list-style-type: decimal">
-<li>The probability that a person has the condition (regardless of the outcome of any test)</li>
-<li>The probability of getting a positive test result given that the person actually has the condition</li>
-<li>The probability of getting a positive test result (regardless of whether the person actually has the condition)</li>
-<li>The probability that a person has the condition, given that the outcome of a test was positive</li>
+<li><p>The probability that a person has the condition (regardless of the outcome of any test)</p></li>
+<li><p>The probability of getting a positive test result given that the person actually has the condition</p></li>
+<li><p>The probability of getting a positive test result (regardless of whether the person actually has the condition)</p></li>
+<li><p>The probability that a person has the condition, given that the outcome of a test was positive</p></li>
+</ol>
+<p><b>A</b>4: 2. The probability of getting a positive test result given that the person actually has the condition</p>
+<hr />
+<p><b>Q</b>5: In our example, what are the values of:</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math">\(P(+|A)\)</span></p></li>
+<li><p><span class="math">\(P(+|\bar{A})\)</span></p></li>
+<li><p><span class="math">\(P(-|A)\)</span></p></li>
+<li><p><span class="math">\(P(-|\bar{A})\)</span></p></li>
+</ol>
+<p><b>A</b>5:</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math">\(P(+|A)\)</span> = sensitivity = 0.8</p></li>
+<li><p><span class="math">\(P(+|\bar{A})\)</span> = 1 - specificity = 0.04</p></li>
+<li><p><span class="math">\(P(-|A)\)</span> = 1 - sensitivity = 0.2</p></li>
+<li><p><span class="math">\(P(-|\bar{A})\)</span> = specificity = 0.96</p></li>
 </ol>
 <hr />
-<p><strong>Q5</strong> In our example, what are the values of :</p>
-<ul>
-<li><span class="math">\(P(+|A)\)</span><br /></li>
-<li><span class="math">\(P(+|\bar{A})\)</span><br /></li>
-<li><span class="math">\(P(-|A)\)</span><br /></li>
-<li><span class="math">\(P(-|\bar{A})\)</span></li>
-</ul>
+<p><b>Q</b>6: Which of the expressions in <b>Q</b>5 correspond to the following terms:</p>
+<ol style="list-style-type: decimal">
+<li><p>Type 1 error rate <span class="math">\(\alpha\)</span></p></li>
+<li><p>Type 2 error rate <span class="math">\(\beta\)</span></p></li>
+<li><p>Power <span class="math">\(=P(+|A)\)</span></p></li>
+</ol>
 <hr />
-<p><strong>Q6</strong> Use arrows to match the expressions in Q5 to the terms in the list on the right, and fill in the corresponding values:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Expression</th>
-<th align="left">Term</th>
-<th align="left">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left"><span class="math">\(P(+|A)\)</span></td>
-<td align="left">specificity</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="left"><span class="math">\(P(+|\bar{A})\)</span></td>
-<td align="left">sensitivity</td>
-</tr>
-<tr class="even">
-<td align="left"><span class="math">\(P(-|A)\)</span></td>
-<td align="left">power</td>
-</tr>
-<tr class="odd">
-<td align="left"><span class="math">\(P(-|\bar{A})\)</span></td>
-<td align="left">Type I error rate <span class="math">\(\alpha\)</span></td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="left">Type II error rate <span class="math">\(\beta\)</span></td>
-</tr>
-</tbody>
-</table>
+<p><b>A</b>6:</p>
+<ol style="list-style-type: decimal">
+<li><p>Type 1 error rate <span class="math">\(\alpha = P(+|\bar{A})\)</span> : a positive result when the truth is negative</p></li>
+<li><p>Type 2 error rate <span class="math">\(\beta = P(-|A)\)</span> ; a negative result when the truth is positive</p></li>
+<li><p>Power <span class="math">\(=P(+|A)\)</span> =sensitivity : the chance that a person who is positive will test positive = the chance that a real effect will be detected.</p></li>
+</ol>
 <hr />
 <p><strong>Q7</strong> What is the power of the test in terms of the Type II error rate <span class="math">\(\beta\)</span>?</p>
 <hr />
