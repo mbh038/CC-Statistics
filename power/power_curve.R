@@ -7,7 +7,7 @@ left.reject <- -1.96 * se
 x <- (left.reject - (-3)) / se
 p <- pt(x, 2 * n - 2)
 
-myPNG('power_curve_neg_3.png', 1000, 500)
+#myPNG('power_curve_neg_3.png', 1000, 500)
 plot(n, p,
      xlab = "Sample Size Per Group",
      ylab = "Power",
@@ -20,6 +20,6 @@ axis(1)
 axis(2)
 abline(h = 0:1, lty = 2, col = COL[6,2])
 lines(n, p, col = COL[1], lwd = 3)
-dev.off()
+#dev.off()
 
 

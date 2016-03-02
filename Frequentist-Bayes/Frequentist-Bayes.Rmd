@@ -23,7 +23,7 @@ MathJax.Hub.Config({
 rm(list=ls()) ### To clear namespace
 library(knitr)
 library(crayon)
-knitr::opts_chunk$set(fig.width=12, fig.height=8, fig.path='Figs/',include=FALSE,echo=FALSE, warning=FALSE, message=FALSE,showAnswers=TRUE,results= 'asis')
+knitr::opts_chunk$set(fig.width=12, fig.height=8, fig.path='Figs/',include=TRUE,echo=FALSE, warning=FALSE, message=FALSE,showAnswers=TRUE,results= 'asis')
 ```
 
 ```{r}
@@ -93,6 +93,7 @@ $P(\mathrm{state\ } 1 | \mathrm{state\ } 2)$  -- which means "the probability th
 
 
 ***
+
 ```{r,include = TRUE}
 qcount=qcount+1
 cat(
@@ -177,6 +178,7 @@ cat(
 "<b>Q</b>",qcount,": Complete the tree diagram below with all of the terms and numbers used so far:\n
 ",sep="")
 ```
+
 ***
 
  ![](tree.png)
@@ -297,7 +299,7 @@ $\\mathrm{Probability\\ of\\ A\\ AND\\ B} = P (A \\cap B) = P(A|B) \\times P(B) 
   
 For, example, the probability of outcome 1 is the probability that someone has the condition AND that they have tested positive: This probability is the product of the probabilities of the two successive choices that were made in the journey along that branch of the tree from left to right. 
 
-$P(1) = P(A \\cap +) = P(A) \\times P(+|A) = 0.01 \\times 0.8 = 0.008$, 
+$P(1) = P(A \\cap +) = P(A) \\times P(+|A) = 0.01 \\times 0.8 = 0.008$ - a TP (True Positive) result
   
 $P(2) =$ 
   
@@ -310,11 +312,11 @@ $P(4) =$
 ```{r}
 cat(
 "<b>A</b>",qcount,":\n 
-$P(2) = P(A \\cap -) = P(A) \\times P(-|A) = 0.01 \\times 0.2 = 0.002$ 
+$P(2) = P(A \\cap -) = P(A) \\times P(-|A) = 0.01 \\times 0.2 = 0.002$ - a FN (False Negative) result 
   
-$P(3) = P(\\bar{A} \\cap +) = P(\\bar{A}) \\times P(+|\\bar{A}) = 0.99 \\times 0.96 = 0.9504$  
+$P(3) = P(\\bar{A} \\cap +) = P(\\bar{A}) \\times P(+|\\bar{A}) = 0.99 \\times 0.04 = 0.0396$ - a FP (False Positive) result  
   
-$P(4) = P(\\bar{A} \\cap -) = P(\\bar{A}) \\times P(-|\\bar{A}) = 0.99 \\times 0.04 = 0.0396$ 
+$P(4) = P(\\bar{A} \\cap -) = P(\\bar{A}) \\times P(-|\\bar{A}) = 0.99 \\times 0.96 = 0.9504$ - a TN (True Negative) result 
 ",sep="")
 ```
 
@@ -323,14 +325,28 @@ $P(4) = P(\\bar{A} \\cap -) = P(\\bar{A}) \\times P(-|\\bar{A}) = 0.99 \\times 0
 ```{r,include = TRUE}
 qcount=qcount+1
 cat(
-"<b>Q</b>",qcount,": Check that $P(1) + P(2) + P(3) + P(4) = 1$.  
-Why must this be the case?
+"<b>Q</b>",qcount,": Which two of outcomes 1, 2, 3 and 4 are correct outcomes, and which two are errors?  
 ",sep="")
 ```
 
 ```{r}
 cat(
-"<b>A</b>",qcount,":The four braches 1...4 are the only possible outcomes. hence the probabilities that a patient ends up in one of them have to sum to one.
+"<b>A</b>",qcount,": Outcomes 1 (TP) and 4 (TN) are correct, while outcomes 2 (FN) nd 3 (FP) are errors.
+",sep="")
+```
+
+***
+
+```{r,include = TRUE}
+qcount=qcount+1
+cat(
+"<b>Q</b>",qcount,": Check that $P(1) + P(2) + P(3) + P(4) = 1$.  Why must this be the case?
+",sep="")
+```
+
+```{r}
+cat(
+"<b>A</b>",qcount,":The four braches 1...4 are the only possible outcomes. Hence the probabilities that a patient ends up in one of them have to sum to one.
 ",sep="")
 ```
 
@@ -340,13 +356,14 @@ cat(
 qcount=qcount+1
 cat(
 "<b>Q</b>",qcount,": What is the probability $P(+)$ of getting a positive result, regardless of whether the person is healthy or has the condition?
-(Hint: this is the sum of two of the outcomes you calculate in Q
-",qcount-2,")",sep="")
+(Hint: this is the sum of two of the outcomes you calculated in Q
+",qcount-3,")",sep="")
 ```
 
 ```{r}
 cat(
-"<b>A</b>",qcount,": $P(+) = P(1) + P(3)= 0.008 + 0.9504 = 0.9584$
+"<b>A</b>",qcount,": $P(+) = P(1) + P(3) = \\text{TP + FP} = 0.008 + 0.0396 = 0.0476$
+This is the sum of the true positive and false negative values
 ",sep="")
 ```
 
@@ -356,13 +373,13 @@ cat(
 qcount=qcount+1
 cat(
 "<b>Q</b>",qcount,": From the numbers you have already calculated, find the probability $P(A|+)$ that someone who has tested positive does have the condition. This is the same as asking 'what proportion of those who test positive actually have the condition?'
-(Hint: you can find this using the two values that you used in Q
-",qcount-3,").",sep="")
+(Hint: you can find this using the same two that you used in Q
+",qcount-1,").",sep="")
 ```
 
 ```{r}
 cat(
-"<b>A</b>",qcount,": $P(A|+) = \\dfrac{P(1)}{P(1)+P(3)} = \\dfrac{0.008}{0.008 + 0.9504}= 0.0084$
+"<b>A</b>",qcount,": $P(A|+) = \\dfrac{P(1)}{P(1)+P(3)} = \\dfrac{\\text{TP}}{\\text{TP+FP}}=\\dfrac{0.008}{0.008 + 0.0396}= 0.168$
 ",sep="")
 ```
 
@@ -386,13 +403,13 @@ We know all the terms on the right hand side of this equation. Use these values 
 
 ```{r}
 cat(
-"<b>A</b>",qcount,": $$P(A|+)=\\dfrac{P(+|A)\\cdot P(A)}{P(+)}=\\dfrac{0.008\\times 0.01}{0.9504}=0.0084$$
+"<b>A</b>",qcount,": $$P(A|+)=\\dfrac{P(+|A)\\cdot P(A)}{P(+)}=\\dfrac{0.008\\times 0.01}{0.0476}=0.168$$
 ",sep="")
 ```
 
 ***
 
-This true positive (TP) result is arguably a more interesting result than the p-value in that it tells us about the probability of our hypothesis (A, that the person has the condition) given an experimental result (+, that the test had a positive outcome), rather than about the probability of a set of data, given a hypothesis.  
+This true positive (TP) result is arguably a more interesting result than the p-value in that it tells us about the probability of our hypothesis (A, that the person has the condition) being correct, given an experimental result (+, that the test had a positive outcome), rather than about the probability of a set of data, given a hypothesis.  
 
 This result $P(+|A)$ is called a _posterior_ result, in that it is what we _now_ know about the probability of someone having the disease, _given_ that a test has been carried out and had a positive result. 
 
@@ -403,7 +420,7 @@ One could argue that this inclusion of prior knowledge is both a strength and a 
 More generally, however, $P(A)$ might be taken to represent the likelihood we assign to the probability that some prior condition is true. Two researchers might disagree about this. They might use their knowledge of the field, of mechanisms, of the number of supporting results and so on. However the value of $P(A)$ might be a judgement, or at least involve some element of subjective judgement, and that is why many, those in the frequentist camp, might object to the Bayesian approach.
 
 
-Are you surprised at the low value of $P(A|+)$? We had a test with high power (0.8) and yet, despite a positive result, it emerges that the person is still much more likely not to have the disease than to have it. More generally, you can think of this as being an example of where we have done an experiment, with high power, detected an effect, and yet it is much more likely than not, despite this, that there is in fact no real effect.
+Are you surprised at the low value of $P(A|+)$? We had a test with high power (0.8) and yet, despite a positive result, it emerges that the person is still about five times more likely to not have the disease than to have it. More generally, you can think of this as being an example of where we have done an experiment, with high power, detected an effect, and yet it is much more likely than not, despite this, that there is in fact no real effect.
 
 Why is this?  
   
